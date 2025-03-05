@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinesh Reacts</title>
+    <title>WhatsApp Form</title>
 </head>
 <body>
-    <img src="DineshReacts/certification/hejex.jpg" style="width:1000px;height:600px;">
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+        
+        <button type="submit">Send to WhatsApp</button>
+    </form>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form submission
+            
+            // Get the form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Create a WhatsApp message
+            const whatsAppMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+            
+            // WhatsApp API URL (replace with your WhatsApp number)
+            const whatsAppURL = `https://wa.me/15555555555?text=${whatsAppMessage}`;
+            
+            // Open WhatsApp link in a new tab
+            window.open(whatsAppURL, '_blank');
+        });
+    </script>
 </body>
 </html>
